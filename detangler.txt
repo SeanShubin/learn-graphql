@@ -1,0 +1,17 @@
+{
+  reportDir target/detangled
+  searchPaths
+  [
+    ./console/target/graphql-console-0.1-SNAPSHOT.jar
+  ]
+  level 2
+  startsWith
+  {
+    include [[com seanshubin learn graphql]]
+    exclude []
+    drop [[com seanshubin learn graphql]]
+  }
+  ignoreFiles []
+  canFailBuild true
+  allowedInCycle []
+}
