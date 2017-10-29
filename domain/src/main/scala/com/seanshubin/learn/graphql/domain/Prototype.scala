@@ -13,7 +13,16 @@ import scala.concurrent.duration.Duration
 import scala.concurrent.{Await, Future}
 import scala.concurrent.ExecutionContext.Implicits.global
 
-object Prototype extends App {
+class Prototype extends Runnable {
+
+  override def run():Unit = {
+    val result: Future[Json] =
+      Executor.execute(schema, query, new ProductRepo)
+
+    val json = Await.result(result, Duration.Inf)
+
+    println(json)
+  }
 
   case class Picture(width: Int, height: Int, url: Option[String])
 
@@ -85,12 +94,4 @@ object Prototype extends App {
       }
     }
   """
-
-
-  val result: Future[Json] =
-    Executor.execute(schema, query, new ProductRepo)
-
-  val json = Await.result(result, Duration.Inf)
-
-  println(json)
 }
