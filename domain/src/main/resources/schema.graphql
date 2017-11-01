@@ -1,22 +1,21 @@
 type Picture {
-  width: Int!
-  height: Int!
-  url: String
+    width: Int!
+    height: Int!
+    url: String
 }
 
 interface Identifiable {
-  id: String!
+    id: String!
 }
 
 type Product implements Identifiable {
-  id: String!
-  name: String!
-  description: String
-  picture(size: Int!): Picture
+    id: String!
+    name: String!
+    description: String
+    picture(size: Int!): Picture
 }
 
 type Query {
-  product(id: Int!): Product
-  products: [Product]
+    product(id: Int!): Product
+    products: [Product]
 }
-`
