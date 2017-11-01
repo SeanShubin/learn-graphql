@@ -1,11 +1,11 @@
+interface Identifiable {
+    id: String!
+}
+
 type Picture {
     width: Int!
     height: Int!
     url: String
-}
-
-interface Identifiable {
-    id: String!
 }
 
 type Product implements Identifiable {
