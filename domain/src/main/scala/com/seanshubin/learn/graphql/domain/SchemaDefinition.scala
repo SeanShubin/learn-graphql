@@ -7,7 +7,7 @@ object SchemaDefinition {
 
   case class Picture(width: Int, height: Int, url: Option[String])
 
-  implicit val PictureType =
+  implicit val PictureType: ObjectType[Unit, Picture] =
     deriveObjectType[Unit, Picture](
       ObjectTypeDescription("The product picture"),
       DocumentField("url", "Picture CDN URL"))
@@ -16,7 +16,7 @@ object SchemaDefinition {
     def id: String
   }
 
-  val IdentifiableType = InterfaceType(
+  val IdentifiableType: InterfaceType[Unit, Identifiable] = InterfaceType(
     "Identifiable",
     "Entity that can be identified",
 
@@ -28,7 +28,7 @@ object SchemaDefinition {
       Picture(width = size, height = size, url = Some(s"//cdn.com/$size/$id.jpg"))
   }
 
-  val ProductType =
+  val ProductType: ObjectType[Unit, Product] =
     deriveObjectType[Unit, Product](
       Interfaces(IdentifiableType),
       IncludeMethods("picture"))
@@ -44,9 +44,9 @@ object SchemaDefinition {
     def products: List[Product] = Products
   }
 
-  val Id = Argument("id", StringType)
+  val Id: Argument[String] = Argument("id", StringType)
 
-  val QueryType = ObjectType("Query", fields[ProductRepo, Unit](
+  val QueryType: ObjectType[ProductRepo, Unit] = ObjectType("Query", fields[ProductRepo, Unit](
     Field("product", OptionType(ProductType),
       description = Some("Returns a product with specific `id`."),
       arguments = Id :: Nil,
@@ -56,5 +56,5 @@ object SchemaDefinition {
       description = Some("Returns a list of all available products."),
       resolve = _.ctx.products)))
 
-  val schema = Schema(QueryType)
+  val schema: Schema[ProductRepo, Unit] = Schema(QueryType)
 }
