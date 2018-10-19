@@ -10,7 +10,7 @@
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
-            <version>2.12.6</version>
+            <version>2.12.7</version>
         </dependency>
         <dependency>
             <groupId>org.scalatest</groupId>
@@ -24,12 +24,12 @@
             <dependency>
                 <groupId>org.scala-lang</groupId>
                 <artifactId>scala-library</artifactId>
-                <version>2.12.6</version>
+                <version>2.12.7</version>
             </dependency>
             <dependency>
                 <groupId>org.scala-lang</groupId>
                 <artifactId>scala-reflect</artifactId>
-                <version>2.12.6</version>
+                <version>2.12.7</version>
             </dependency>
             <dependency>
                 <groupId>org.scalatest</groupId>
@@ -40,7 +40,7 @@
             <dependency>
                 <groupId>org.sangria-graphql</groupId>
                 <artifactId>sangria_2.12</artifactId>
-                <version>1.4.0</version>
+                <version>1.4.2</version>
             </dependency>
             <dependency>
                 <groupId>org.sangria-graphql</groupId>
